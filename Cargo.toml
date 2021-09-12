@@ -1,0 +1,41 @@
+[package]
+name = "radiohyrule"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+chrono = "0.4"
+crossbeam = "0.8"
+lazy_static = "1.4"
+minimp3 = "0.5"
+slice-deque = "0.3"
+thiserror = "1"
+winapi = { version = "0.3", features = ["winuser"] }
+
+[dependencies.serde]
+version = "1"
+features = [
+  "derive"
+]
+
+[dependencies.reqwest]
+version = "0.11"
+default-features = false
+features = [
+  "rustls-tls",
+  "blocking",
+  "json",
+]
+
+[dependencies.sdl2]
+version = "0.34"
+default-features = false
+features = ["gfx","image","static-link","ttf","use-vcpkg"]
+
+[package.metadata.vcpkg]
+dependencies = ["sdl2", "sdl2-image[libjpeg-turbo,tiff,libwebp]", "sdl2-ttf", "sdl2-gfx", "sdl2-mixer"]
+git = "https://github.com/microsoft/vcpkg"
+rev = "261c458af6e3eed5d099144aff95d2b5035f656b"
+
+[package.metadata.vcpkg.target]
+x86_64-pc-windows-msvc = { triplet = "x64-windows-static-md" }
